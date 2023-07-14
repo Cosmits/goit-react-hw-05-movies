@@ -1,31 +1,30 @@
+import { StyledContainer } from "components/App.styled";
 import Loader from "components/Loader/Loader";
 import { Suspense } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { HeaderNavLink, Menu } from "./Layout.styled";
 
 export default function Layout() {
   return (
     <>
       <header>
-        <div className="Container">
-          <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/movies">Movies</NavLink>
+        <StyledContainer >
+          <nav style={Menu}>
+            <HeaderNavLink to="/">Home</HeaderNavLink >
+            <HeaderNavLink to="/movies">Movies</HeaderNavLink >
           </nav>
-        </div>
+        </StyledContainer>
       </header>
       <main>
-        <div className="Container">
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </div>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </main>
       <footer>
-        <div className="Container">
-          <p>All Rights Reserved |
-            <a href="https://github.com/Cosmits" target="_blank" rel="noreferrer"> Developed by Samofal H. </a>
+        <StyledContainer>
+          <p>All Rights Reserved || <a href="https://github.com/Cosmits" target="_blank" rel="noreferrer"><b> Developed by Samofal H. </b></a>
             &#169; 2023</p>
-        </div>
+        </StyledContainer>
       </footer>
     </>
   )

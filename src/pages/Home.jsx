@@ -1,28 +1,35 @@
-
 import { useState, useEffect } from "react";
 
 import { getTrendingAllDay } from "../API/get-from-server";
 
+import { StyledContainer } from "components/App.styled";
+
 import Loader from "../components/Loader";
 import ErrorTitle from "../components/ErrorTitle";
-// import { MovieList } from "components/MovieList/MovieList";
+import Button from "components/Button/Button";
+import ImageGallery from "components/ImageGallery/ImageGallery";
 
 
 export default function Home() {
+  const [page, setPage] = useState(1);
+
   const [trendingAllDay, setTrendingAllDay] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [hasError, setHasError] = useState(false);
 
+  const addCurrentPage = () => {
+    setPage(prevPage => prevPage + 1);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const data = await getTrendingAllDay();
-        console.log("🚀 ~ file: Home.jsx:23 ~ fetchData ~ data:", data)
-        
-        setTrendingAllDay(data);
+        const data = await getTrendingAllDay(page);
+
+        setTrendingAllDay(prevData => [...prevData, ...data.results]);
+
         setError(null);
       } catch (error) {
         setHasError(true);
@@ -32,18 +39,18 @@ export default function Home() {
       }
     }
     fetchData();
-   
-  }, []);
 
-  console.log(trendingAllDay);
+  }, [page]);
 
   return (
     <>
       {isLoading && <Loader />}
-      <h1>Trending All Days</h1>
-      {/* <MovieList movies={trendingAllDay} /> */}
+      <StyledContainer>
+        <h1>Trending All Days</h1>
+      </StyledContainer>
+      {trendingAllDay?.length > 0 && <ImageGallery images={trendingAllDay}> </ImageGallery>}
+      <Button onClick={addCurrentPage} />
       {hasError && <ErrorTitle error={error} />}
-
     </>
   );
 }

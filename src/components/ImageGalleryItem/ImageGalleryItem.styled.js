@@ -8,7 +8,7 @@ export const StyledImageGalleryItem = styled.li`
 
 export const StyledImageGalleryItemImage = styled.img`
   width: 100%;
-  height: 260px;
+  height: 467px;
   object-fit: cover;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -17,3 +17,9 @@ export const StyledImageGalleryItemImage = styled.img`
     cursor: zoom-in;
   }
 `
+export const StyledTitle = styled.h2`
+  margin: 12px 8px;
+  font-size: 2rem;
+  font-weight: 700;
+
+`;

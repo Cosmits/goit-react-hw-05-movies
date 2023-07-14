@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 
 import ImageGalleryItem from 'components/ImageGalleryItem';
 
-import { StyledContainer } from 'components/TitleH1/TitleH1.styled';
 import { StyledImageGallery } from './ImageGallery.styled';
-
+import { StyledContainer } from 'components/App.styled';
 
 const ImageGallery = ({ images }) => {
+
   return (
     <>
       <StyledContainer>

@@ -2,18 +2,21 @@ import PropTypes from 'prop-types'
 
 import {
   StyledImageGalleryItem,
-  StyledImageGalleryItemImage
+  StyledImageGalleryItemImage,
+  StyledTitle
 } from './ImageGalleryItem.styled';
 
 export default function ImageGalleryItem(props) {
 
-  const { image: { tags, webformatURL } } = props;
-  
+  const { image: { title, poster_path, name } } = props;
+  const alt = !title ? name : title;
+
   return (
     <StyledImageGalleryItem>
       <StyledImageGalleryItemImage
-        src={webformatURL}
-        alt={tags} />
+        src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+        alt={alt} />
+      <StyledTitle>{alt} </StyledTitle>
     </StyledImageGalleryItem>
   )
 
@@ -21,8 +24,8 @@ export default function ImageGalleryItem(props) {
 
 ImageGalleryItem.propTypes = {
   image: PropTypes.shape({
-    tags: PropTypes.string.isRequired,
-    webformatURL: PropTypes.string.isRequired,
-    userImageURL: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    name: PropTypes.string,
   }).isRequired,
 };
