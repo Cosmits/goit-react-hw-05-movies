@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import NoPoster from '../../images/no-poster.jpg'
 
 import {
   StyledImageGalleryItem,
@@ -13,9 +14,14 @@ export default function ImageGalleryItem(props) {
 
   return (
     <StyledImageGalleryItem>
-      <StyledImageGalleryItemImage
+
+      {poster_path
+        ? <StyledImageGalleryItemImage src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={alt} />
+        : <StyledImageGalleryItemImage src={NoPoster} alt={alt} />}
+
+      {/* <StyledImageGalleryItemImage
         src={`https://image.tmdb.org/t/p/w300${poster_path}`}
-        alt={alt} />
+        alt={alt} /> */}
       <StyledTitle>{alt} </StyledTitle>
     </StyledImageGalleryItem>
   )
@@ -24,7 +30,7 @@ export default function ImageGalleryItem(props) {
 
 ImageGalleryItem.propTypes = {
   image: PropTypes.shape({
-    poster_path: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
     title: PropTypes.string,
     name: PropTypes.string,
   }).isRequired,
