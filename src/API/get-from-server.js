@@ -14,14 +14,8 @@ function generateOption(addURL, params) {
 }
 
 async function axiosGet(options) {
-  try {
     const response = await axios.request(options);
     return response.data;
-  } catch (err) {
-    console.error(err);
-
-    throw new Error(err);
-  }
 }
 
 //============================================================================
