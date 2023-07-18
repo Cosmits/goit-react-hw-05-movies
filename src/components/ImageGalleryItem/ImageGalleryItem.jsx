@@ -1,27 +1,21 @@
 import PropTypes from 'prop-types'
-import NoPoster from '../../images/no-poster.jpg'
 
 import {
   StyledImageGalleryItem,
   StyledImageGalleryItemImage,
   StyledTitle
 } from './ImageGalleryItem.styled';
+import { getImg, getInfo } from 'API/utils';
 
 export default function ImageGalleryItem(props) {
 
   const { image: { title, poster_path, name } } = props;
-  const alt = !title ? name : title;
+  const img = getImg(poster_path);
+  const alt = getInfo([title, name]);
 
   return (
     <StyledImageGalleryItem>
-
-      {poster_path
-        ? <StyledImageGalleryItemImage src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={alt} />
-        : <StyledImageGalleryItemImage src={NoPoster} alt={alt} />}
-
-      {/* <StyledImageGalleryItemImage
-        src={`https://image.tmdb.org/t/p/w300${poster_path}`}
-        alt={alt} /> */}
+      <StyledImageGalleryItemImage src={img} alt={alt} />
       <StyledTitle>{alt} </StyledTitle>
     </StyledImageGalleryItem>
   )

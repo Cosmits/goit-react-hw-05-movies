@@ -9,6 +9,7 @@ import Loader from "components/Loader/Loader";
 import ImageGallery from "components/ImageGallery/ImageGallery";
 import SearchBar from "components/SearchBar/SearchBar";
 import ErrorTitle from "components/ErrorTitle/ErrorTitle";
+import { useSearchParams } from "react-router-dom";
 
 export default function Movies() {
 
@@ -24,13 +25,19 @@ export default function Movies() {
   const [error, setError] = useState(false);
   const [hasError, setHasError] = useState(false);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query');
+
   const handleSubmit = query => {
     if (searchValue !== query) {
-      setSearchValue(query);
+      // setSearchValue(query);
       setImages([]);
       setCurrentPage(1);
       setTotalHits(0)
       setTheEnd(false);
+
+      setSearchParams({ query: query });
+      setSearchValue('');
     }
   };
 
@@ -40,7 +47,7 @@ export default function Movies() {
 
 
   useEffect(() => {
-    if (!searchValue || theEnd) {
+    if (!searchQuery || theEnd) {
       setIsLoading(false);
       return;
     }
@@ -49,11 +56,11 @@ export default function Movies() {
       try {
         setIsLoading(true);
 
-        const data = await getSearchMovie({ query: searchValue, page: currentPage });
+        const data = await getSearchMovie({ query: searchQuery, page: currentPage });
 
         // All right 
         if (data.results.length && currentPage === 1) {
-          toast.info(<span>Fined {data.total_results} movies with name {searchValue}</span>, {
+          toast.info(<span>Fined {data.total_results} movies with name {searchQuery}</span>, {
             position: toast.POSITION.TOP_LEFT,
             theme: "colored",
           });
@@ -88,7 +95,7 @@ export default function Movies() {
 
     getImagesFromAPI();
 
-  }, [searchValue, currentPage, theEnd])
+  }, [searchQuery, currentPage, theEnd])
 
   //! Infinite scroll - intersectionObserver
   const observerTarget = useRef(null);

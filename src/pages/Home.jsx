@@ -49,7 +49,7 @@ export default function Home() {
         <h1>Trending All Days</h1>
       </StyledContainer>
       {trendingAllDay?.length > 0 && <ImageGallery images={trendingAllDay}> </ImageGallery>}
-      <Button onClick={addCurrentPage} />
+      <Button onClick={addCurrentPage} title={'Load more'} />
       {hasError && <ErrorTitle error={error} />}
     </>
   );

@@ -16,11 +16,25 @@ export const HeaderNavLink = styled(NavLink)`
   display: inline-block;
 
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 1rem;
   text-transform: uppercase;
   padding: 8px 16px;
   color: black;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  @media screen and (min-width: 468px) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 3rem;
+  }
+
   
   :hover,
   :focus {

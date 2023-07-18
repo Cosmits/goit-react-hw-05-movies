@@ -36,7 +36,7 @@ export default function SearchBar({ onSubmit }) {
 
         <StyledSearchFormInput
           type="text"
-          autoComplete="off"
+          autoComplete="on"
           autoFocus
           placeholder="Search movies..."
           name="searchName"
