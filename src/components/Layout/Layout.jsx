@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { HeaderNavLink, Menu } from "./Layout.styled";
 
-export default function Layout() {
+const Layout = () => {
   return (
     <>
       <header>
@@ -29,3 +29,5 @@ export default function Layout() {
     </>
   )
 }
+
+export default Layout;

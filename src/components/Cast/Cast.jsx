@@ -9,7 +9,7 @@ import Loader from "components/Loader/Loader";
 import { StyledCastImage, StyledCastItem, StyledCastList, StyledCastTitle } from "./Cast.styled";
 import { getImg } from "API/utils";
 
-function Cast() {
+const Cast = () => {
 
   const { movieId } = useParams();
   const [movieCast, setMovieCast] = useState({});

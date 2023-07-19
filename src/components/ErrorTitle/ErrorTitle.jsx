@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function ErrorTitle({ error }) {
+const ErrorTitle = ({ error }) => {
   return (
     <pre style={{ textAlign: "left" }} > Something went wrong,
       <code>

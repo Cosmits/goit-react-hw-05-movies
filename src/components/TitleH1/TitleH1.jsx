@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyledContainer } from 'components/App.styled';
 import { StyledTitleH1 } from './TitleH1.styled';
 
-export default function TitleH1({ searchValue, totalHits }) {
+const TitleH1 = ({ searchValue, totalHits }) => {
   return (
     <StyledContainer>
       <StyledTitleH1> {searchValue}
@@ -17,3 +17,5 @@ TitleH1.propTypes = {
   searchValue: PropTypes.string.isRequired,
   totalHits: PropTypes.number.isRequired,
 }
+
+export default TitleH1;

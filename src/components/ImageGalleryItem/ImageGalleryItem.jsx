@@ -8,7 +8,7 @@ import {
 import { getImg, getInfo } from 'API/utils';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function ImageGalleryItem(props) {
+const ImageGalleryItem = (props) => {
 
   const { image: { title, poster_path, name, id } } = props;
   const img = getImg(poster_path);
@@ -35,3 +35,5 @@ ImageGalleryItem.propTypes = {
     name: PropTypes.string,
   }).isRequired,
 };
+
+export default ImageGalleryItem;
