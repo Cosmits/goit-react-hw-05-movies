@@ -30,7 +30,7 @@ export default function SearchBar({ onSubmit }) {
   return (
     <StyledSearchBar>
       <StyledSearchForm onSubmit={handleSubmit}>
-        <StyledSearchFormButton type="submit">
+        <StyledSearchFormButton type="submit" title="Search">
           <SearchIcon />
         </StyledSearchFormButton>
 
