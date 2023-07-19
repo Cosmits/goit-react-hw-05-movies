@@ -8,7 +8,7 @@ import Loader from "components/Loader";
 import ErrorTitle from "components/ErrorTitle";
 import { StyledReviewsList } from "./Reviews.styled";
 
-function Reviews() {
+const Reviews = () => {
 
   const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState({});

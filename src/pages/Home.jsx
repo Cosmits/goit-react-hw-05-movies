@@ -10,7 +10,7 @@ import Button from "components/Button/Button";
 import ImageGallery from "components/ImageGallery/ImageGallery";
 
 
-export default function Home() {
+const Home = () => {
   const [page, setPage] = useState(1);
 
   const [trendingAllDay, setTrendingAllDay] = useState([]);
@@ -54,3 +54,4 @@ export default function Home() {
     </>
   );
 }
+export default Home;

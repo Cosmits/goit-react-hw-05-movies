@@ -11,7 +11,7 @@ import SearchBar from "components/SearchBar/SearchBar";
 import ErrorTitle from "components/ErrorTitle/ErrorTitle";
 import { useSearchParams } from "react-router-dom";
 
-export default function Movies() {
+const Movies = () => {
 
   const [searchValue, setSearchValue] = useState('');
   const [images, setImages] = useState([]);
@@ -137,3 +137,5 @@ export default function Movies() {
       <ToastContainer hideProgressBar />
     </>)
 }
+
+export default Movies;
